@@ -1,12 +1,5 @@
-The RevIP.rb and updateDB.rb files are both written in ruby.
+MC Reverse IP is a system written in ruby designed to parse the Bukkit Essentials logs files and save the ip address of a user into a .csv file.
 
-They can by run like this
-
-	./RevIP.rb <arguments>
-
-or
-
-	ruby revIP.rb <arguments>
 
 
 updateDB.rb
