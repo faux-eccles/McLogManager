@@ -4,7 +4,7 @@ MC Reverse IP is a system written in ruby designed to parse the Bukkit Essential
 
 updateDB.rb
 
-This file is used to populate the ipdb.csv file that is used as the data base. It will save the IP and then the user name seperated by a ','.  Each entry will be put on a new line.
+This file is used to populate the ipdb.csv file that is used as the data base. It will save the IP and then the user name seperated by a comma.  Each entry will be put on a new line.
 
 Usage:
 
