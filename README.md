@@ -3,7 +3,6 @@
 MC Reverse IP is a system written in ruby designed to parse the Bukkit Essentials logs files and save the ip address of a user into a .csv file.
 
 
-
 ##**updateDB.rb**
 
 This file is used to populate the ipdb.csv file that is used as the data base. It will save the IP and then the user name seperated by a comma.  Each entry will be put on a new line.
@@ -29,11 +28,11 @@ Running the program with no agruments will force the program to update the datab
 This program is used to search the ipdb.csv database for the specified filter
 
 Usage:
-
-	./revIP.rb <filter> ...
-
+```
+./revIP.rb <filter> ...
+```
 this will only display the matches for the given filter, for more matches add more filters as arguments
-
+```
 	./revIP.rb
-
+```
 not giving any arguments will dump the entire db to screen
