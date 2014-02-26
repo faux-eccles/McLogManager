@@ -1,6 +1,6 @@
 #Minecraft Reverse IP lookup
 
-MC Reverse IP is a system written in ruby designed to parse the Bukkit Essentials logs files and save the ip address of a user into a .csv file.
+MC Reverse IP is a system written in ruby designed to parse the Bukkit Essentials logs files and save the ip address of a player and the player's username into a .csv file.
 
 
 ##**updateDB.rb**
