@@ -39,7 +39,7 @@ def parseEntriesFromLogs(logs)
         #       but it doesn't check anything else so if a user were to say the string in chat, it would be logged and this function
         #       would try and parse it.  This needs to be fixed in a future version that will make use of regex
         
-    if File.extname(logs) == ".gz"I
+    if File.extname(logs) == ".gz"
         file_gz = Zlib::GzipReader.open(logs)                           # If the file is a .gz file it will be read line by line, using the zlib library
         file_content = file_gz.readlines()                                  # Each line is add to the the array file_content
     else
