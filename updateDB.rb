@@ -122,7 +122,15 @@ if ARGV.first == nil                            #If there was no arguments, make
         end
     end
 else					                #Otherwse if there was at least one argument, make the array of the given files
-    LOGFILES = ARGV
+    for i in (0...ARGV.length)
+        if !File.exist?(ARGV[i])
+            puts "The file #{ARGV[i]} does not exist"
+        elsif File.extname(ARGV[i]) == '.log' or File.extname(ARGV[i]) == '.gz'
+            LOGFILES.push(LogFile.new(ARGV[i]))
+        else
+            puts "No valid log file given"
+        end
+    end
 end
 
 updateDB()                                                                           # Run the update function
