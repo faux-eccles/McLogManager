@@ -17,10 +17,13 @@ LOGFILES = []			        #List to hold the file names of the parsed logs
 GROUPID = 1000                           #UNIX groupid for changing who has access to the data base 
 
 #
-# shouldn't have anything to change below this point
+# shouldn't have to change anything below this point
 #
 
 class LogFile
+    # All methods for handling log files will now be included into this class
+    # This class will have all the methods for parsing the log files and returning the required information (IP address, stats, etc)
+    
     def initialize(logLocation)
         @logLocation = logLocation
     end
@@ -35,7 +38,7 @@ class LogFile
         
         if File.extname(@logLocation) == ".gz"
             file_gz = Zlib::GzipReader.open(@logLocation)                           # If the file is a .gz file it will be read line by line, using the zlib library
-            fileContent = file_gz.readlines()                                  # Each line is add to the the array file_content
+            fileContent = file_gz.readlines()                                  # Each line is add to the the array fileContent
         else
             fileContent = IO.readlines(@logLocation)
         end
@@ -46,29 +49,28 @@ class LogFile
             username = loggedip.split("[")[0]
             loggedip = loggedip.split("[")[1].split(":")[0]
             loggedip.slice!("/")
-            entries.push("#{loggedip},#{username}\n")      # Add the data to the $entries array in a csv style eg "127.0.0.1,username"
+            entries.push("#{loggedip},#{username}\n")      # Add the data to the entries array in a csv style eg "127.0.0.1,username"
         end
         end
         return entries                                                                # Returns the array of snipped data
     end
     
     def getLocation()
+        # Returns the location of the file object
         return File.realpath(@logLocation)    
     end
-    
-    
 end
 
 
 def updateDB()
-        # Update the ipdb file as specified in @IPDATABASE.  This will append the new data to the end of the file if it exists
+        # Update the ipdb file as specified in IPDATABASE.  This will append the new data to the end of the file if it exists
         #       otherwise it will create a new file at the given location and update that.  Once the file is saved the group ownership is modified
         #       and the group policy for the file is modified so that users who belong to that group can read from and write to that file.
         #       The group ID is specified at the top of the program.
         
         # Need to add in a -v flag to opt out of messages that show what file is being accessed
         
-        # This maybe re written into a general class for file handling, merging with the revIP.rb
+        # This may be re written into a general class for file handling, merging with the revIP.rb
         
     if File.exist?(IPDATABASE) == false                                # Check for files existance, if it doesn't
         f = File.new(IPDATABASE,"a+")                                   # Create a new one
@@ -121,11 +123,11 @@ if ARGV.first == nil                            #If there was no arguments, make
            LOGFILES.push(LogFile.new(location))
         end
     end
-else					                #Otherwse if there was at least one argument, make the array of the given files
+else					                #Otherwse if there was at least one argument, make the array of the given files, 
     for i in (0...ARGV.length)
-        if !File.exist?(ARGV[i])
+        if !File.exist?(ARGV[i])                                            #First checks to make sure that the file specified exists
             puts "The file #{ARGV[i]} does not exist"
-        elsif File.extname(ARGV[i]) == '.log' or File.extname(ARGV[i]) == '.gz'
+        elsif File.extname(ARGV[i]) == '.log' or File.extname(ARGV[i]) == '.gz'    # And that it is a supported file type
             LOGFILES.push(LogFile.new(ARGV[i]))
         else
             puts "No valid log file given"
