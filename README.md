@@ -1,6 +1,6 @@
-#Minecraft Reverse IP lookup
+#Minecraft Log Manager
 
-MC Reverse IP is a system written in ruby designed to parse the Bukkit Essentials logs files and save the ip address of a player and the player's username into a .csv file.
+Mc Log Manager is a system written in ruby designed to parse the Bukkit Essentials logs files and perform different actions on them, such as Reverse IP which will let you search for all users that have signed on under an IP or all the IP's that a user has logged in under
 
 
 ##**updateDB.rb**
