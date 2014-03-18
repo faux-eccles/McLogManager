@@ -2,37 +2,24 @@
 
 Mc Log Manager is a system written in ruby designed to parse the Bukkit Essentials logs files and perform different actions on them, such as Reverse IP which will let you search for all users that have signed on under an IP or all the IP's that a user has logged in under
 
+##**LogFileManager.rb**
 
-##**updateDB.rb**
-
-This file is used to populate the ipdb.csv file that is used as the data base. It will save the IP and then the user name seperated by a comma.  Each entry will be put on a new line.
-
-Usage:
-
-```
-./updateDB.rb <absolute pathname>
-```
-
-This will update the db with the log file given in the arguments, many log files may specified at one time by creating a new argument for each file.  Supported file type: ".log" and ".gz"  Both are automatically created by the bukkit essentials plugin.
-
-```
-./updateDB.rb
-```
-
-Running the program with no agruments will force the program to update the database using all the logs located in the directory specified in @LOGSLOCATION.
-
-
-
-##**revIP.rb**
-
-This program is used to search the ipdb.csv database for the specified filter
+This is the main program.  It will import all the different log file processes from the lib/ folder
 
 Usage:
+
 ```
-./revIP.rb <filter> ...
+./LogFileManager.rb <flag>
 ```
-this will only display the matches for the given filter, for more matches add more filters as arguments
+
+for a complete list of flags use 
+
 ```
-	./revIP.rb
+$ ./LogFileManager.rb -?
+Minecraft Log File Manager usage
+
+  -?              	- Shows the usage options
+  -u              	- Update the ip adress database
+  -r [player/ip]  	- search the ip database for user or IP
 ```
-not giving any arguments will dump the entire db to screen
+
