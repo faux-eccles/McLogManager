@@ -14,12 +14,12 @@ require './lib/logFiles'
 #
 # shouldn't have to change anything below this point
 #
-class UpdateDB
+class UpdateIPDB
     def initialize()
-        @IPDATABASE = "./ipdb.csv"            #location and file name for the file the data will be stored in
-        @LOGSLOCATION = "./"                  #default location of the logs to be parsed
+        @IPDATABASE = @@IPDATABASE            #location and file name for the file the data will be stored in
+        @LOGSLOCATION = @@LOGSLOCATION                  #default location of the logs to be parsed
         @LOGFILES = []                    #List to hold the file names of the parsed logs
-        @GROUPID = 1000                           #UNIX groupid for changing who has access to the data base 
+        @GROUPID = @@GROUPID                          #UNIX groupid for changing who has access to the data base 
 
     end
     

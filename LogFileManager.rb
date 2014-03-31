@@ -1,7 +1,14 @@
 #!/usr/bin/ruby1.9.1
 
 require "./lib/revIP"
-require "./lib/updateDB"
+require "./lib/updateIPDB"
+require "./lib/UserSeen"
+
+
+@@LOGSLOCATION = "./logs/"                  #default location of the logs to be parsed
+@@IPDATABASE = './ipdb.csv'
+@@GROUPID = 1000                           #UNIX groupid for changing who has access to the data base 
+
 
 if ARGV.first == nil
     puts "Welcome to the Minecraft Log File Manager"
@@ -9,29 +16,26 @@ if ARGV.first == nil
 elsif ARGV.first == "-?"
     puts "Minecraft Log File Manager usage"
     puts
-    puts "  -?              - Shows the usage options"
+    puts "  -?               - Shows the usage options"
     puts
     puts "--- Reverse IP ---"
     puts
-    puts "  -u [database]   - Update the ip adress database"
-    puts "  -r [player/ip]  - Search the ip database for user or IP"
+    puts "  -u [database]    - Update the ip adress database"
+    puts "  -r [player/ip]   - Search the ip database for user or IP"
     puts
-    puts "--- First Join ---"
+    puts "--- Date seen ---"
     puts 
-    puts "  -f <player>     - Shows the date that a player first joined"
+    puts "  -s [player/date] - Shows the dates that a player has connected (relies on the default bukkit log config)"
     puts
 elsif ARGV.first == "-u"
-    u = UpdateDB.new()
+    u = UpdateIPDB.new()
     u.run(ARGV[1...ARGV.length])
 elsif ARGV.first == "-r"
     r = RevIP.new()
     r.run(ARGV[1...ARGV.length])
-elsif ARGV.first == "-f"
-    if ARGV[1] != nil
-        puts "To be implemented"
-    else
-        puts "Please provide a user name"
-    end
+elsif ARGV.first == "-s"
+    s = UserSeen.new()
+    puts s.getDateSeen(ARGV[1])
 else
     puts "Incorrect usage. Please use the \"-?\" flag for more usage options"
 end

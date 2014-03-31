@@ -10,7 +10,7 @@ git = www.github.com/lankyninja/McReverseIP
 
 class RevIP
     def initialize()
-        @IPDATABASE = './ipdb.csv'
+        @IPDATABASE = @@IPDATABASE
     end
     
     def dumpDB()
@@ -44,7 +44,7 @@ class RevIP
                 dumpFilteredDB(filter)                                        # Otherwise use each argument as a filter
             end
         else
-            puts "Datbase doesn't exist yet, try running updateDB.rb"
+            puts "Database doesn't exist yet, try running updateDB.rb"
         end
     end
 end
