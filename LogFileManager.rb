@@ -10,8 +10,15 @@ elsif ARGV.first == "-?"
     puts "Minecraft Log File Manager usage"
     puts
     puts "  -?              - Shows the usage options"
-    puts "  -u              - Update the ip adress database"
-    puts "  -r [player/ip]  - search the ip database for user or IP"
+    puts
+    puts "--- Reverse IP ---"
+    puts
+    puts "  -u [database]   - Update the ip adress database"
+    puts "  -r [player/ip]  - Search the ip database for user or IP"
+    puts
+    puts "--- First Join ---"
+    puts 
+    puts "  -f <player>     - Shows the date that a player first joined"
     puts
 elsif ARGV.first == "-u"
     u = UpdateDB.new()
@@ -19,6 +26,12 @@ elsif ARGV.first == "-u"
 elsif ARGV.first == "-r"
     r = RevIP.new()
     r.run(ARGV[1...ARGV.length])
+elsif ARGV.first == "-f"
+    if ARGV[1] != nil
+        puts "To be implemented"
+    else
+        puts "Please provide a user name"
+    end
 else
     puts "Incorrect usage. Please use the \"-?\" flag for more usage options"
 end
