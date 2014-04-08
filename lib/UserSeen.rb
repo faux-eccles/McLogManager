@@ -43,7 +43,7 @@ class UserSeen
         namesighted.uniq!
         if user != nil
             for i in (namesighted)
-                if i.include?(user)
+                if i.downcase.include?(user.downcase)
                     nameonly.push(i)
                 end
             end
