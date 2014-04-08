@@ -28,7 +28,7 @@ class RevIP
         line = db.readlines()
         for i in(0...line.length)                                           # For everyline
         for ifilter in filter                                                # Check each filter
-            if line[i].include? ifilter                                    # if it is in the currentline
+            if line[i].downcase.include? ifilter.downcase                                   # if it is in the currentline
             puts line[i]                                                  # print to screen if it is
             end
         end
