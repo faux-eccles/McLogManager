@@ -1,12 +1,11 @@
 #!/usr/bin/ruby1.9.1
 
-require "./lib/revIP"
-require "./lib/updateIPDB"
-require "./lib/UserSeen"
+require_relative "lib/revIP"
+require_relative "lib/updateIPDB"
+require_relative "lib/UserSeen"
 
-
-@@LOGSLOCATION = "./logs/"                  #default location of the logs to be parsed
-@@IPDATABASE = './ipdb.csv'
+@@LOGSLOCATION = File.dirname(__FILE__)+"/logs/"                  #default location of the logs to be parsed
+@@IPDATABASE = File.dirname(__FILE__)+'/ipdb.csv'
 @@GROUPID = 1000                           #UNIX groupid for changing who has access to the data base 
 
 

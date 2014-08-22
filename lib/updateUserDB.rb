@@ -8,7 +8,7 @@ git = www.github.com/lankyninja/McReverseIP
 =end
 
 require 'zlib'                    #for reading the .gz files
-require './lib/logFiles'
+require _relative'logFiles'
 
 #Constants you might want to change
 #
