@@ -3,5 +3,6 @@
 *.log.gz
 /logs
 *.komodoproject
+/.komodotools
 rSQLite.rb
 test.db
